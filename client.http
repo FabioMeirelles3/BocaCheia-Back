@@ -1,0 +1,139 @@
+@baseUrl = http://localhost:3000 
+@authToken = {{authenticate.response.body.access_token}}
+
+# @name create_client 
+POST {{baseUrl}}/clients
+Content-Type: application/json
+
+{
+    "name": "fabio",
+    "email": "fabio3@gmail.com",
+    "password": "12345678",
+    "file": "file"
+}
+
+### 
+
+# @name authenticate 
+POST {{baseUrl}}/sessions
+Content-Type: application/json
+
+{
+    "email": "fabio@gmail.com",
+    "password": "12345678"
+}
+###
+
+# @name find_client 
+GET {{baseUrl}}/clients/311b38b8-f683-40a1-8e16-fb1d1a5989bf
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name findAll_client 
+GET {{baseUrl}}/clients
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+### 
+
+# @name update_client 
+PATCH {{baseUrl}}/clients
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "id": "f838bede-2ac1-4d7a-8498-fca1c0140ce7",
+    "name": "fabio2"
+}
+
+### 
+
+# @name create_restaurant 
+POST {{baseUrl}}/restaurants
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "name": "name test",
+    "description": "description test",
+    "phone": "phone test",
+    "address": "address test",
+    "number": "number test",
+    "complement": "complement test",
+    "district": "district test",
+    "file": "file test"
+}
+###
+
+# @name find_restaurant 
+GET {{baseUrl}}/restaurants/9f2346cf-4c6d-4a04-a536-50975ba882c6
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name findAll_restaurant 
+GET {{baseUrl}}/restaurants
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+### 
+
+# @name update_restaurant 
+PATCH {{baseUrl}}/restaurants
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "id": "91f3c5d6-2280-4fac-82e3-c9036d92c265",
+    "name": "name test2"
+}
+
+### 
+
+# @name create_menu 
+POST {{baseUrl}}/menus
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "name": "name test",
+    "description": "description test",
+    "price": 11.11,
+    "file": "file test",
+    "restaurantId": "504e93cf-2846-4595-a467-26ae55ba2069"
+}
+###
+
+# @name find_menu 
+GET {{baseUrl}}/menus/7ea3edf0-af43-4c1d-8863-277568d1c5a4
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name find_menuByRestaurant
+GET {{baseUrl}}/menus/rest/504e93cf-2846-4595-a467-26ae55ba2069
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name findAll_menu 
+GET {{baseUrl}}/menus
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+### 
+
+# @name update_menu 
+PATCH {{baseUrl}}/menus
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "id": "28bfb89a-4a75-4c0c-92bc-2d7913fe316a",
+    "name": "name test2"
+}
